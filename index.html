@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naufal Rafli Melyan | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-text {
+            text-shadow: 0 0 10px rgba(74, 222, 128, 0.7);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(74, 222, 128, 0.25);
+        }
+        
+        .skill-pill {
+            transition: all 0.2s ease;
+        }
+        
+        .skill-pill:hover {
+            transform: scale(1.05);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4ade80;
+            border: 3px solid #022c22;
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .rotate-3d {
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 5px -5px #4ade80; }
+            to { box-shadow: 0 0 20px 5px #4ade80; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <div id="vanta-bg" class="fixed inset-0 -z-10"></div>
+    
+    <!-- Floating 3D Elements -->
+    <div class="fixed top-1/4 left-1/4 w-16 h-16 rounded-full bg-emerald-400 opacity-20 floating"></div>
+    <div class="fixed top-1/3 right-1/4 w-24 h-24 rounded-full bg-emerald-500 opacity-20 floating" style="animation-delay: 2s;"></div>
+    <div class="fixed bottom-1/4 right-1/3 w-20 h-20 rounded-full bg-emerald-600 opacity-20 floating" style="animation-delay: 4s;"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-80 backdrop-blur-md z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-emerald-400 flex items-center">
+                    <span class="mr-2">Portofolio</span>
+                    <div class="w-3 h-3 rounded-full bg-emerald-400 glow"></div>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-emerald-400 transition">About</a>
+                    <a href="#experience" class="hover:text-emerald-400 transition">Experience</a>
+                    <a href="#education" class="hover:text-emerald-400 transition">Education</a>
+                    <a href="#skills" class="hover:text-emerald-400 transition">Skills</a>
+                    <a href="#contact" class="hover:text-emerald-400 transition">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 hero-text">
+                        <span class="text-emerald-400">Naufal</span> Rafli Melyan
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl mb-6 text-gray-300">
+                        Digital Asset Manager
+                    </h2>
+                    <p class="text-lg mb-8 text-gray-400 max-w-lg">
+                        I am an active student in the 6th semester of the Library and Information Science Study Program at Maulana Malik Ibrahim State Islamic University Malang.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 rounded-full font-medium transition transform hover:scale-105">
+                            Contact Me
+                        </a>
+                        <a href="#about" class="px-8 py-3 border border-emerald-400 text-emerald-400 hover:bg-emerald-900 rounded-full font-medium transition transform hover:scale-105">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <div class="w-48 h-48 md:w-60 md:h-60 rounded-2xl border-4 border-emerald-400 overflow-hidden glow">
+                            <img src="img/aku.png" alt="Profile" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800 bg-opacity-50 backdrop-blur-sm">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-emerald-400">Executive</span> Summary
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-900 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover">
+                    <p class="text-lg leading-relaxed">
+                    <center> Library and Information Science student with in-depth knowledge in information management, basic programming, and UX-based system development. Analytical thinking skills, mastery of digital asset management tools, and experience in academic research. Ready to contribute to the field of information and technology with an innovative and solutive approach. </center>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-emerald-400">Work</span> Experience
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Experience 1 -->
+                <div class="mb-12">
+                    <div class="bg-gray-800 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover">
+                        <div class="flex flex-col md:flex-row justify-between mb-4">
+                            <h3 class="text-2xl font-bold text-emerald-400">Junior Photographer</h3>
+                            <span class="text-gray-400">Jan 2019 – Apr 2022</span>
+                        </div>
+                        <h4 class="text-xl mb-4">Freelance – Sumenep, Indonesia</h4>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Working on photo shoots including Prewedding Moment, Birthday Moment, Graduation Event.</li>
+                            <li>Working on a collaborative project for the Indonesian Independence Day event and yearbook photo session.</li>
+                            <li>Participated in several photography competitions with smartphones and camera.</li>
+                            <li>Proficient in photo editing software including Lightroom Mobile and VSCO.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="mb-12">
+                    <div class="bg-gray-800 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover">
+                        <div class="flex flex-col md:flex-row justify-between mb-4">
+                            <h3 class="text-2xl font-bold text-emerald-400">Graphic Designer</h3>
+                            <span class="text-gray-400">Jan 2019 – Apr 2022</span>
+                        </div>
+                        <h4 class="text-xl mb-4">Freelance – Sumenep, Indonesia</h4>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Working on graphic design projects such as banners, stickers, logos, flyers, menus, thumbnails, posters, UI design, and others.</li>
+                            <li>Proficient in graphic design software such as Pixellab, Canva, and Figma.</li>
+                            <li>Working on graphic design projects with target customers of students and merchants (UMKM).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-gray-800 bg-opacity-50 backdrop-blur-sm">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-emerald-400">Education</span> Background
+            </h2>
+            
+            <div class="max-w-4xl mx-auto relative">
+                <div class="absolute left-8 md:left-1/2 h-full w-1 bg-emerald-500 bg-opacity-30 transform -translate-x-1/2"></div>
+                
+                <!-- Education 1 -->
+                <div class="mb-12 pl-12 md:pl-0 relative timeline-item">
+                    <div class="bg-gray-900 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover md:ml-32">
+                        <div class="flex flex-col md:flex-row justify-between mb-4">
+                            <h3 class="text-2xl font-bold text-emerald-400">Maulana Malik Ibrahim State Islamic University Malang</h3>
+                            <span class="text-gray-400">Aug 2022 – Present</span>
+                        </div>
+                        <h4 class="text-xl mb-4">Library and Information Science, GPA: 3.66/4.00</h4>
+                        <p class="mb-4">Activities & Achievements:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>As the third winner of the poster competition at "Health Insurance Festival Competition 2024" organized by Kemenkes Poltekkes Malang.</li>
+                            <li>Received an award from the Faculty of Science and Technology Maulana Malik Ibrahim State Islamic University Malang as an outstanding student in 2024.</li>
+                            <li>Has graduated from the Arabic Intensive Program of the academic year 2022/2023 with a Grade Point Average of 3.50/4.00.</li>
+                            <li>Have passed the Intensive English Program in two semesters with a score of 590 and an Upper Intermediate level.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Education 2 -->
+                <div class="mb-12 pl-12 md:pl-0 relative timeline-item">
+                    <div class="bg-gray-900 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover md:ml-32">
+                        <div class="flex flex-col md:flex-row justify-between mb-4">
+                            <h3 class="text-2xl font-bold text-emerald-400">Senior High School 1 Sumenep</h3>
+                            <span class="text-gray-400">Jul 2019 – May 2022</span>
+                        </div>
+                        <h4 class="text-xl mb-4">Math and Science, GPA: 90.8/100</h4>
+                        <p class="mb-4">Activities & Achievements:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Participating in extracurricular activities in the religious field.</li>
+                            <li>Award as the second winner in the group short video competition between senior high school/equivalent students in Sumenep District in 2022.</li>
+                            <li>Being as Director of Photography in the making of extracurricular video demo Senior High School 1 Sumenep.</li>
+                            <li>Being a cameraman in the making of a podcast video to participate in the competition Jawa POS SMA Awards 2022.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-emerald-400">Skills</span> & Expertise
+            </h2>
+            
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Substance -->
+                <div class="bg-gray-800 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover">
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-6">Substance</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Collection Management</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Information Systems</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Research Methods</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">User Studies</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Information Literacy</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Cataloguing</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Statistics</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Management</span>
+                    </div>
+                </div>
+                
+                <!-- Soft Skills -->
+                <div class="bg-gray-800 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover">
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-6">Soft Skills</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Teamwork</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Creative Thinking</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Problem Solving</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Collaboration</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Time Management</span>
+                    </div>
+                </div>
+                
+                <!-- Hard Skills -->
+                <div class="bg-gray-800 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover">
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-6">Hard Skills</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Microsoft Office</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Canva</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Capcut</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Figma</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">Publish or Perish</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">OPAC</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">SLiMS</span>
+                        <span class="skill-pill px-4 py-2 bg-emerald-900 bg-opacity-50 rounded-full">MySQL</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Languages -->
+            <div class="max-w-2xl mx-auto mt-12 bg-gray-800 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover">
+                <h3 class="text-2xl font-bold text-emerald-400 mb-6 text-center">Languages</h3>
+                <div class="flex justify-center gap-8">
+                    <div class="text-center">
+                        <div class="w-24 h-24 rounded-full border-4 border-emerald-400 flex items-center justify-center mx-auto mb-3">
+                            <span class="text-xl font-bold">ID</span>
+                        </div>
+                        <span class="font-medium">Fluent</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-24 h-24 rounded-full border-4 border-emerald-400 flex items-center justify-center mx-auto mb-3">
+                            <span class="text-xl font-bold">EN</span>
+                        </div>
+                        <span class="font-medium">Passive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Achievements Section -->
+    <section class="py-20 bg-gray-800 bg-opacity-50 backdrop-blur-sm">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-emerald-400">Achievements</span> & Awards
+            </h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-900 bg-opacity-60 rounded-2xl p-6 border border-gray-700 card-hover">
+                    <div class="flex items-start">
+                        <div class="bg-emerald-900 bg-opacity-30 p-3 rounded-lg mr-4">
+                            <i class="fas fa-trophy text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">3rd Place Poster Competition</h3>
+                            <p class="text-gray-400">Health Insurance Festival Competition 2024</p>
+                            <p class="text-sm text-emerald-400 mt-2">Kemenkes Poltekkes Malang</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-60 rounded-2xl p-6 border border-gray-700 card-hover">
+                    <div class="flex items-start">
+                        <div class="bg-emerald-900 bg-opacity-30 p-3 rounded-lg mr-4">
+                            <i class="fas fa-award text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Outstanding Student Award</h3>
+                            <p class="text-gray-400">Faculty of Science and Technology</p>
+                            <p class="text-sm text-emerald-400 mt-2">Maulana Malik Ibrahim State Islamic University</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-60 rounded-2xl p-6 border border-gray-700 card-hover">
+                    <div class="flex items-start">
+                        <div class="bg-emerald-900 bg-opacity-30 p-3 rounded-lg mr-4">
+                            <i class="fas fa-medal text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">2nd Place Short Video Competition</h3>
+                            <p class="text-gray-400">Between senior high school/equivalent students</p>
+                            <p class="text-sm text-emerald-400 mt-2">Sumenep District Education Office</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-60 rounded-2xl p-6 border border-gray-700 card-hover">
+                    <div class="flex items-start">
+                        <div class="bg-emerald-900 bg-opacity-30 p-3 rounded-lg mr-4">
+                            <i class="fas fa-certificate text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Intensive Bootcamp & Short Class</h3>
+                            <p class="text-gray-400">Professional development certification</p>
+                            <p class="text-sm text-emerald-400 mt-2">MySkill</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-emerald-400">Get</span> In Touch
+            </h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover">
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-6">Contact Information</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-emerald-900 bg-opacity-30 p-2 rounded-lg mr-4">
+                                <i class="fas fa-map-marker-alt text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Location</h4>
+                                <p class="text-gray-400">Malang, Indonesia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-emerald-900 bg-opacity-30 p-2 rounded-lg mr-4">
+                                <i class="fas fa-phone-alt text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Phone</h4>
+                                <p class="text-gray-400">087860117418</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-emerald-900 bg-opacity-30 p-2 rounded-lg mr-4">
+                                <i class="fas fa-envelope text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-gray-400">rafli110503@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-emerald-900 bg-opacity-30 p-2 rounded-lg mr-4">
+                                <i class="fab fa-linkedin-in text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">LinkedIn</h4>
+                                <p class="text-gray-400">linkedin.com/in/nraafly</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex space-x-4">
+                        <a href="https://wa.me/+6287860117418" class="w-10 h-10 rounded-full bg-emerald-900 bg-opacity-30 flex items-center justify-center hover:bg-emerald-800 transition">
+                            <i class="fas fa-phone-alt text-emerald-400"></i>
+                        </a>
+                        <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=rafli110503@gmail.com" class="w-10 h-10 rounded-full bg-emerald-900 bg-opacity-30 flex items-center justify-center hover:bg-emerald-800 transition">
+                            <i class="fas fa-envelope text-emerald-400"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/nraafly" class="w-10 h-10 rounded-full bg-emerald-900 bg-opacity-30 flex items-center justify-center hover:bg-emerald-800 transition">
+                            <i class="fab fa-linkedin-in text-emerald-400"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nraafly" class="w-10 h-10 rounded-full bg-emerald-900 bg-opacity-30 flex items-center justify-center hover:bg-emerald-800 transition">
+                            <i class="fab fa-instagram text-emerald-400"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-emerald-900 bg-opacity-30 flex items-center justify-center hover:bg-emerald-800 transition">
+                            <i class="fab fa-github text-emerald-400"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 bg-opacity-60 rounded-2xl p-8 border border-gray-700 card-hover">
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-6">Send Me a Message</h3>
+                    
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block mb-2">Your Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="block mb-2">Your Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-500 rounded-lg font-medium transition transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900 bg-opacity-80 backdrop-blur-sm">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center mb-6">
+                <a href="#" class="text-2xl font-bold text-emerald-400 flex items-center">
+                    <span class="mr-2">Naufal Rafli Melyan</span>
+                    <div class="w-3 h-3 rounded-full bg-emerald-400 glow"></div>
+                </a>
+            </div>
+            <p class="text-gray-400 mb-4">© 2024 Naufal Rafli Melyan. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Initialize Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x10b981,
+            backgroundColor: 0x111827,
+            points: 10.00,
+            maxDistance: 20.00,
+            spacing: 15.00
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.card-hover').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
